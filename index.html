@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Sea Louder — видео по ссылке</title>
+<link rel="stylesheet" href="style.css">
+</head>
+<body>
+<div class="bg-orbs"><span></span><span></span><span></span></div>
+
+<header>
+	<h1>🌊 Sea&nbsp;<em>Louder</em></h1>
+	<p>Вставь ссылку — смотри или скачай видео</p>
+</header>
+
+<main>
+	<form id="form" autocomplete="off">
+		<input id="urlInput" type="text" placeholder="https://youtube.com/watch?v=… или https://x.com/user/status/…" required>
+		<button type="submit">Открыть ▸</button>
+	</form>
+
+	<nav class="chips">
+		<span class="chip active">▶ Встроить</span>
+		<button class="chip hidden" id="dlChip" type="button">⬇ Сохранить видео</button>
+		<button class="chip hidden" id="audioChip" type="button">🎵 Сохранить аудио</button>
+		<a class="chip hidden" id="origChip" href="#" target="_blank" rel="noopener">↗ Открыть источник</a>
+		<select class="chip" id="hdSelect" title="Максимальное качество видео">
+			<option value="best">HD: лучшее</option>
+			<option value="1080">1080p</option>
+			<option value="720">720p</option>
+			<option value="480">480p</option>
+			<option value="360">360p</option>
+		</select>
+	</nav>
+
+	<div id="serverBox" class="card warn hidden"></div>
+
+	<section id="playerCard" class="hidden card">
+		<div id="embedWrap"></div>
+		<p id="caption"></p>
+	</section>
+
+	<div id="loader" class="spinner-wrap hidden"><div class="spinner"></div><p>Загружаем ссылку…</p></div>
+	<div id="errorBox" class="card err hidden"></div>
+
+	<section id="library" class="card lib hidden">
+		<div class="lib-head">
+			<h2>📁 Мои загрузки <span id="libCount" class="lib-badge">0</span></h2>
+			<button class="chip" id="refreshBtn" type="button">⟳ Обновить</button>
+		</div>
+		<p class="lib-path">Папка: <code id="libDir">downloads</code> — эти файлы играют без интернета</p>
+		<div id="libList"></div>
+	</section>
+</main>
+
+<footer>
+	sites: YouTube • X / Twitter • Instagram • TikTok • VK • Reddit<br>
+	скачивание делает твой локальный <code>server.py</code> через yt-dlp — файлы лежат в папке проекта<br>
+	© sea louder · только личное использование
+</footer>
+
+<script src="app.js"></script>
+</body>
+</html>
