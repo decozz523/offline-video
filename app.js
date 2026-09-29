@@ -28,7 +28,6 @@ function detect(url) {
 	if (h.endsWith("vk.com") || h.endsWith("vkvideo.ru")) return { platform: "vk", url: url.href };
 	if (h.endsWith("reddit.com")) return { platform: "reddit", url: url.href };
 	if (h.endsWith("tiktok.com")) return { platform: "tiktok", url: url.href };
-	if (h.endsWith("instagram.com")) return { platform: "instagram", url: url.href };
 	return { platform: "other", url: url.href };
 }
 
@@ -248,9 +247,8 @@ async function run() {
 			case "twitter": await loadTwitter(d.url); break;
 			case "reddit": await loadReddit(d.url); break;
 			case "tiktok":
-			case "instagram":
-				caption.textContent = d.platform === "tiktok" ? "TikTok" : "Instagram";
-				wrap.innerHTML = `<p class="caption">У этих платформ закрытый плеер — смотреть получится только после сохранения.<br>
+				caption.textContent = "TikTok";
+				wrap.innerHTML = `<p class="caption">У этой платформы закрытый плеер — смотреть получится только после сохранения.<br>
 					Нажми <b>«Сохранить видео»</b>, файл попадёт в блок «Мои загрузки» и откроется без интернета.</p>`;
 				break;
 			default:
